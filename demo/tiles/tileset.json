@@ -1,0 +1,119 @@
+{
+  "asset": {
+    "version": "1.1"
+  },
+  "geometricError": 800,
+  "root": {
+    "boundingVolume": {
+      "box": [
+        0,
+        0,
+        80,
+        1000,
+        0,
+        0,
+        0,
+        1000,
+        0,
+        0,
+        0,
+        80
+      ]
+    },
+    "geometricError": 400,
+    "refine": "REPLACE",
+    "content": {
+      "uri": "root.glb"
+    },
+    "children": [
+      {
+        "boundingVolume": {
+          "box": [
+            -500,
+            500,
+            80,
+            500,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            80
+          ]
+        },
+        "geometricError": 0,
+        "content": {
+          "uri": "block-0.glb"
+        }
+      },
+      {
+        "boundingVolume": {
+          "box": [
+            500,
+            500,
+            80,
+            500,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            80
+          ]
+        },
+        "geometricError": 0,
+        "content": {
+          "uri": "block-1.glb"
+        }
+      },
+      {
+        "boundingVolume": {
+          "box": [
+            -500,
+            -500,
+            80,
+            500,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            80
+          ]
+        },
+        "geometricError": 0,
+        "content": {
+          "uri": "block-2.glb"
+        }
+      },
+      {
+        "boundingVolume": {
+          "box": [
+            500,
+            -500,
+            80,
+            500,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            80
+          ]
+        },
+        "geometricError": 0,
+        "content": {
+          "uri": "block-3.glb"
+        }
+      }
+    ]
+  }
+}

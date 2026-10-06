@@ -1,0 +1,71 @@
+{
+  "name": "@cwolf-systems/playwright-cesium",
+  "version": "0.1.0",
+  "description": "Playwright helpers for testing CesiumJS scenes: know when a scene has finished drawing, hold time and the camera still, step frames exactly, find places on the canvas, and read its pixels.",
+  "license": "Apache-2.0",
+  "author": "CWOLFSYSTEMS <info@cwolfsystems.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cwolf-systems/playwright-cesium.git"
+  },
+  "homepage": "https://github.com/cwolf-systems/playwright-cesium#readme",
+  "bugs": "https://github.com/cwolf-systems/playwright-cesium/issues",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "NOTICE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "node --eval \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run --project unit",
+    "test:coverage": "vitest run --project unit --coverage",
+    "test:browser": "playwright test",
+    "scene": "node demo/server.mjs 4173",
+    "test:count": "node tools/test-count.mjs",
+    "bench:platforms": "node bench/platforms.mjs",
+    "bench:accuracy": "npm run build && node bench/accuracy.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "@playwright/test": ">=1.53"
+  },
+  "keywords": [
+    "playwright",
+    "cesium",
+    "cesiumjs",
+    "testing",
+    "gis",
+    "webgl",
+    "3d-tiles"
+  ],
+  "devDependencies": {
+    "@cwolf-systems/playwright-perceptual": "^0.1.0",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.20.5",
+    "@vitest/coverage-v8": "^5.0.3",
+    "cesium": "^1.146.0",
+    "eslint": "^10.12.0",
+    "prettier": "^3.9.9",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.1",
+    "vitest": "^5.0.3"
+  }
+}

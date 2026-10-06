@@ -1,0 +1,45 @@
+name: Platform probe
+
+# What each browser can do for CesiumJS on each platform (docs/benchmarks/platforms.md). It records
+# and never fails, so it runs apart from CI: weekly, on demand, and when what it measures changes.
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - bench/platforms.mjs
+      - demo/**
+      - package-lock.json
+      - .github/workflows/platform-probe.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: platform-probe
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    name: Platform probe (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npm run bench:platforms
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: probe-${{ matrix.os }}
+          path: bench/results/platforms/

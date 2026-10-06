@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>playwright-cesium demo scene</title>
+<link rel="stylesheet" href="/cesium/Widgets/widgets.css" />
+<style>
+  html,
+  body,
+  #scene {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+</style>
+<div id="scene"></div>
+<script>
+  window.CESIUM_BASE_URL = '/cesium/';
+</script>
+<script src="/cesium/Cesium.js"></script>
+<script src="/scene.js"></script>

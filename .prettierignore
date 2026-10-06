@@ -1,0 +1,8 @@
+dist/
+coverage/
+test-results/
+playwright-report/
+package-lock.json
+bench/results/
+# Written by demo/tiles/build.mjs
+demo/tiles/tileset.json
